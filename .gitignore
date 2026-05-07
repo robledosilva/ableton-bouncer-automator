@@ -1,5 +1,13 @@
+# Gerador de chaves (PRIVADO — nunca commitar)
+keygen.py
+last_serial.txt
+
 # Flags de controle de processo
 *.flag
+
+# Build output
+build/
+dist/
 
 # Atalhos do Windows
 *.lnk

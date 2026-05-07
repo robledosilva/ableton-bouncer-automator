@@ -667,7 +667,18 @@ class BounceApp:
             self.root.after(0, self._reset)
 
 if __name__ == "__main__":
-    root = tk.Tk(); BounceApp(root); root.mainloop()
+    from license import is_activated, ActivationWindow
+    root = tk.Tk()
+    root.withdraw()                          # hide main window during activation check
+    if not is_activated():
+        aw = ActivationWindow(root)
+        root.wait_window(aw.win)             # block until dialog closes
+        if not aw.activated:                 # user closed without activating
+            root.destroy()
+            sys.exit(0)
+    root.deiconify()                         # show main window
+    BounceApp(root)
+    root.mainloop()
 
 
 
