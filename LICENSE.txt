@@ -1,0 +1,140 @@
+ABLETON BOUNCE AUTOMATOR — END USER LICENSE AGREEMENT (EULA)
+Version 2.0 | Copyright (c) 2025 Robledo Silva. All rights reserved.
+Contact: robledosilva@gmail.com
+
+READ THIS AGREEMENT CAREFULLY BEFORE INSTALLING OR USING THIS SOFTWARE.
+BY INSTALLING, COPYING, OR OTHERWISE USING ABLETON BOUNCE AUTOMATOR, YOU
+AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT
+AGREE, DO NOT INSTALL OR USE THE SOFTWARE.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. GRANT OF LICENSE
+
+   Subject to the terms of this Agreement, Robledo Silva grants you a
+   personal, non-exclusive, non-transferable, limited license to install
+   and use one (1) copy of Ableton Bounce Automator on a single computer
+   owned or controlled by you, solely for your personal or internal
+   business purposes.
+
+2. LICENSE KEY & ACTIVATION
+
+   The Software requires a valid license key for activation. Each license
+   key is valid for a single installation. You may not share, sell,
+   transfer, or distribute your license key to any third party.
+
+3. RESTRICTIONS
+
+   You may NOT:
+   a) Copy, modify, adapt, translate, or create derivative works of the
+      Software or any part thereof;
+   b) Reverse engineer, disassemble, decompile, or otherwise attempt to
+      derive the source code of the Software;
+   c) Rent, lease, lend, sell, sublicense, or otherwise transfer the
+      Software or your license key to any third party;
+   d) Remove or alter any proprietary notices, labels, or marks on the
+      Software;
+   e) Use the Software for any unlawful purpose or in violation of any
+      applicable law or regulation.
+
+4. OWNERSHIP
+
+   The Software is licensed, not sold. Robledo Silva retains all
+   intellectual property rights in and to the Software, including all
+   copies thereof. This Agreement does not grant you any rights to
+   trademarks or service marks of Robledo Silva.
+
+5. THIRD-PARTY COMPONENTS
+
+   This Software includes AbletonMCP, developed by Siddharth Ahuja and
+   licensed under the MIT License. The full text of the MIT License is
+   included in the file LICENSE_AbletonMCP.txt. Robledo Silva makes no
+   representations or warranties with respect to such third-party
+   components.
+
+   This Software is designed to work with Ableton Live, a product of
+   Ableton AG. This Software is not affiliated with, endorsed by, or
+   sponsored by Ableton AG.
+
+6. DISCLAIMER OF WARRANTIES
+
+   THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY
+   OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+   TITLE, AND NON-INFRINGEMENT.
+
+   ROBLEDO SILVA DOES NOT WARRANT THAT:
+   a) THE SOFTWARE WILL MEET YOUR REQUIREMENTS;
+   b) THE SOFTWARE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE;
+   c) THE RESULTS OBTAINED FROM USE OF THE SOFTWARE WILL BE ACCURATE
+      OR RELIABLE;
+   d) THE SOFTWARE WILL BE COMPATIBLE WITH ANY FUTURE VERSION OF
+      ABLETON LIVE OR ANY THIRD-PARTY SOFTWARE.
+
+   YOU ASSUME ALL RISK ASSOCIATED WITH THE USE OF THE SOFTWARE, INCLUDING
+   BUT NOT LIMITED TO THE RISK OF DATA LOSS, HARDWARE DAMAGE, OR ANY
+   OTHER DAMAGE TO YOUR COMPUTER SYSTEM.
+
+7. LIMITATION OF LIABILITY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
+   ROBLEDO SILVA BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER, INCLUDING
+   BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, LOSS OF DATA, BUSINESS
+   INTERRUPTION, LOSS OF GOODWILL, OR ANY OTHER COMMERCIAL DAMAGES OR
+   LOSSES, ARISING OUT OF OR IN CONNECTION WITH:
+
+   a) YOUR USE OF, OR INABILITY TO USE, THE SOFTWARE;
+   b) ANY MODIFICATION OR DISCONTINUATION OF THE SOFTWARE;
+   c) UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR DATA;
+   d) ANY OTHER MATTER RELATING TO THE SOFTWARE.
+
+   THIS LIMITATION APPLIES WHETHER THE LIABILITY IS BASED ON CONTRACT,
+   TORT, NEGLIGENCE, STRICT LIABILITY, OR ANY OTHER BASIS, EVEN IF
+   ROBLEDO SILVA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   IN JURISDICTIONS THAT DO NOT ALLOW THE EXCLUSION OR LIMITATION OF
+   INCIDENTAL OR CONSEQUENTIAL DAMAGES, ROBLEDO SILVA'S LIABILITY SHALL
+   BE LIMITED TO THE FULLEST EXTENT PERMITTED BY LAW.
+
+   IN ANY CASE, ROBLEDO SILVA'S TOTAL CUMULATIVE LIABILITY TO YOU FOR
+   ALL CLAIMS ARISING FROM OR RELATED TO THIS AGREEMENT SHALL NOT EXCEED
+   THE AMOUNT YOU PAID FOR THE SOFTWARE LICENSE.
+
+8. UPDATES AND SUPPORT
+
+   Robledo Silva is under no obligation to provide updates, patches,
+   bug fixes, technical support, or new versions of the Software.
+   Any updates, if provided, shall be subject to the terms of this
+   Agreement unless accompanied by a separate license.
+
+9. TERMINATION
+
+   This Agreement is effective until terminated. Your rights under this
+   Agreement will terminate automatically and without notice if you fail
+   to comply with any term of this Agreement. Upon termination, you must
+   immediately cease all use of the Software and destroy all copies in
+   your possession.
+
+10. GOVERNING LAW
+
+    This Agreement shall be governed by and construed in accordance with
+    the laws of Brazil, without regard to its conflict of law provisions.
+    Any disputes arising under this Agreement shall be subject to the
+    exclusive jurisdiction of the courts of Brazil.
+
+11. ENTIRE AGREEMENT
+
+    This Agreement constitutes the entire agreement between you and
+    Robledo Silva with respect to the Software and supersedes all prior
+    or contemporaneous understandings or agreements, written or oral,
+    regarding the Software.
+
+12. CONTACT
+
+    Robledo Silva
+    robledosilva@gmail.com
+    https://github.com/robledosilva/ableton-bouncer-automator
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Copyright (c) 2025 Robledo Silva. All rights reserved.

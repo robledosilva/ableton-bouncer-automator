@@ -25,7 +25,7 @@ AppUpdatesURL={#AppURL}/releases
 DefaultDirName={autopf}\{#AppName}
 DefaultGroupName={#AppName}
 AllowNoIcons=yes
-LicenseFile={#AssetsDir}\LICENSE_AbletonMCP.txt
+LicenseFile=..\LICENSE.txt
 OutputDir=output
 OutputBaseFilename=AbletonBounceAutomator_Setup_v{#AppVersion}
 SetupIconFile=
@@ -55,9 +55,12 @@ Name: desktopicon; Description: "Create a &Desktop shortcut"; GroupDescription: 
 ; Main app (entire cx_Freeze build output)
 Source: "{#DistDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
+; Licenses
+Source: "..\LICENSE.txt";                    DestDir: "{app}"; Flags: ignoreversion
+Source: "{#AssetsDir}\LICENSE_AbletonMCP.txt"; DestDir: "{app}"; Flags: ignoreversion
+
 ; AbletonMCP Remote Script (bundled — MIT license)
 Source: "{#AssetsDir}\ableton_mcp_init.py";  DestDir: "{tmp}"; Flags: dontcopy noencryption
-Source: "{#AssetsDir}\LICENSE_AbletonMCP.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 ; ── Shortcuts ─────────────────────────────────────────────────────────────────
 [Icons]
