@@ -352,8 +352,8 @@ class BounceApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Ableton Bounce Automator")
-        self.root.geometry("740x600")
-        self.root.minsize(620, 480)
+        self.root.geometry("740x660")
+        self.root.minsize(620, 540)
         self.root.configure(bg=self.C["bg"])
         self._running = self._paused = self._stop = False
         self._ableton_frozen = False
