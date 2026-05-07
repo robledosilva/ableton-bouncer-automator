@@ -81,7 +81,7 @@ icon_path = "icon.ico"  # place an icon.ico here to embed it (optional)
 executables = [
     Executable(
         script        = "ableton_bouncer.py",
-        base          = "Win32GUI",          # no console window
+        base          = "gui",                # no console window (cx_Freeze 7+)
         target_name   = "AbletonBounceAutomator.exe",
         icon          = icon_path if os.path.exists(icon_path) else None,
         copyright     = "© Robledo Silva",
