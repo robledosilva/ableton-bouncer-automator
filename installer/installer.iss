@@ -101,25 +101,12 @@ end;
 // ── Check if Ableton Live is running ─────────────────────────────────────
 function AbletonIsRunning(): Boolean;
 var
-  WbemLocator  : Variant;
-  WbemServices : Variant;
-  WbemObject   : Variant;
-  ProcessList  : Variant;
+  ResultCode: Integer;
 begin
-  Result := False;
-  try
-    WbemLocator  := CreateOleObject('WbemScripting.SWbemLocator');
-    WbemServices := WbemLocator.ConnectServer('', 'root\CIMV2');
-    ProcessList  := WbemServices.ExecQuery(
-      'SELECT Name FROM Win32_Process WHERE Name LIKE "Ableton Live%"');
-    for WbemObject in ProcessList do
-    begin
-      Result := True;
-      Break;
-    end;
-  except
-    // If WMI fails, assume not running
-  end;
+  Exec(ExpandConstant('{sys}\cmd.exe'),
+       '/c tasklist /FI "IMAGENAME eq Ableton*" 2>nul | find /i "Ableton" >nul',
+       '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Result := (ResultCode = 0);
 end;
 
 // ── Install AbletonMCP files ──────────────────────────────────────────────
