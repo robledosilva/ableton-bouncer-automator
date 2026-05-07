@@ -28,7 +28,7 @@ AllowNoIcons=yes
 LicenseFile=..\LICENSE.txt
 OutputDir=output
 OutputBaseFilename=AbletonBounceAutomator_Setup_v{#AppVersion}
-SetupIconFile=
+SetupIconFile=..\icon.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
@@ -64,9 +64,9 @@ Source: "{#AssetsDir}\ableton_mcp_init.py";  DestDir: "{tmp}"; Flags: dontcopy n
 
 ; ── Shortcuts ─────────────────────────────────────────────────────────────────
 [Icons]
-Name: "{group}\{#AppName}";                      Filename: "{app}\{#AppExe}"
+Name: "{group}\{#AppName}";                      Filename: "{app}\{#AppExe}"; IconFilename: "{app}\{#AppExe}"
 Name: "{group}\Uninstall {#AppName}";            Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#AppName}";                Filename: "{app}\{#AppExe}"; Tasks: desktopicon
+Name: "{autodesktop}\{#AppName}";                Filename: "{app}\{#AppExe}"; IconFilename: "{app}\{#AppExe}"; Tasks: desktopicon
 
 ; ── Pascal code ───────────────────────────────────────────────────────────────
 [Code]
