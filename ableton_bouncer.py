@@ -15,7 +15,7 @@ try:
     pyautogui.PAUSE    = 0.05
 except ImportError as e:
     root = tk.Tk(); root.withdraw()
-    messagebox.showerror("Dependencia", f"{e}\npip install pywin32 pyautogui")
+    messagebox.showerror("Missing dependency", f"{e}\npip install pywin32 pyautogui")
     sys.exit(1)
 
 MAX_RENDER_SEC = 180
@@ -234,7 +234,7 @@ def is_toggle_on(hwnd, y_frac):
 
 def navigate_export_dialog(export_hwnd, project_folder, als_stem, end_sec, log=None):
     """
-    Tab x3  -> Render Start  (nao mexe)
+    Tab x3  -> Render Start  (leave as-is)
     Tab x1  -> Render Length -> digita barras -> Enter
     Tab x7  -> WAV toggle    -> desliga se ON
     Tab x4  -> MP3 toggle    -> liga se OFF
@@ -252,23 +252,23 @@ def navigate_export_dialog(export_hwnd, project_folder, als_stem, end_sec, log=N
     for _ in range(7): pyautogui.press("tab"); time.sleep(0.08)
     time.sleep(0.5)
     wav_on, mp3_on = check_toggles(export_hwnd)
-    log("  [toggle] estado atual — WAV=" + ("ON" if wav_on else "OFF") + " MP3=" + ("ON" if mp3_on else "OFF"))
+    log("  [toggle] current state — WAV=" + ("ON" if wav_on else "OFF") + " MP3=" + ("ON" if mp3_on else "OFF"))
     if wav_on:
-        log("  [toggle] WAV ON -> desligando")
+        log("  [toggle] WAV ON -> turning off")
         pyautogui.press("enter"); time.sleep(0.5)
 
     # Tab x4 -> MP3
     for _ in range(4): pyautogui.press("tab"); time.sleep(0.08)
     time.sleep(0.5)
     if not mp3_on:
-        log("  [toggle] MP3 OFF -> ligando")
+        log("  [toggle] MP3 OFF -> turning on")
         pyautogui.press("enter"); time.sleep(0.5)
 
     # Verificacao final com novo screenshot
     wav_final, mp3_final = check_toggles(export_hwnd)
     log("  [toggle] FINAL — WAV=" + ("ON" if wav_final else "OFF") + " MP3=" + ("ON" if mp3_final else "OFF"))
     if wav_final or not mp3_final:
-        log("  [toggle] ATENCAO estado incorreto!", warn=True)
+        log("  [toggle] WARNING incorrect state!", warn=True)
 
     # Tab x4 -> Export button -> Enter
     for _ in range(4): pyautogui.press("tab"); time.sleep(0.08)
@@ -289,7 +289,7 @@ def navigate_export_dialog(export_hwnd, project_folder, als_stem, end_sec, log=N
         win32gui.EnumWindows(find_save, None)
         if save_dlg: break
         time.sleep(0.3)
-    if not save_dlg: return False, "Save As nao abriu"
+    if not save_dlg: return False, "Save As dialog did not open"
     win32gui.SetForegroundWindow(save_dlg[0]); time.sleep(0.5)
     mp3_name = f"{Path(project_folder).name} - {als_stem}.mp3"
     mp3_full = str(Path(project_folder) / mp3_name)
@@ -313,16 +313,16 @@ def wait_export_progress():
         if find_export_audio_window(): break
         time.sleep(0.25)
     else:
-        return False, "Janela 'Export Audio...' nao apareceu"
+        return False, "'Export Audio...' window did not appear"
     while find_export_audio_window(): time.sleep(0.4)
     time.sleep(2.0)
     if find_export_audio_window():
         while find_export_audio_window(): time.sleep(0.4)
         time.sleep(2.0)
-    return True, "Export concluido"
+    return True, "Export complete"
 
 def clear_popups(n=15, delay=0.3):
-    """Dispensa todos os dialogs pendentes do Ableton ate nao restar nenhum."""
+    """Dismisses all pending Ableton dialogs until none remain."""
     for _ in range(n):
         if not _get_ableton_popup(): break
         dismiss_ok_dialog()
@@ -359,7 +359,7 @@ class BounceApp:
         self._ableton_frozen = False
         self._thread  = None
         self._build_ui()
-        self._log("Pronto. Selecione uma pasta e clique em Iniciar.", "dim")
+        self._log("Ready. Select a folder and click Start.", "dim")
 
     def _build_ui(self):
         C = self.C
@@ -369,7 +369,7 @@ class BounceApp:
         tk.Label(hdr, text="v2.0", bg=C["header"], fg=C["dim"],
                  font=("Segoe UI",9)).pack(side="right", padx=12)
         fr = tk.Frame(self.root, bg=C["bg"], padx=14, pady=10); fr.pack(fill="x")
-        tk.Label(fr, text="Pasta de projetos:", bg=C["bg"], fg=C["text"],
+        tk.Label(fr, text="Projects folder:", bg=C["bg"], fg=C["text"],
                  font=("Segoe UI",10)).pack(anchor="w")
         row = tk.Frame(fr, bg=C["bg"]); row.pack(fill="x", pady=(4,0))
         self.folder_var = tk.StringVar()
@@ -380,14 +380,14 @@ class BounceApp:
                   relief="flat", cursor="hand2", padx=12,
                   font=("Segoe UI",9)).pack(side="left", padx=(6,0))
         sb = tk.Frame(self.root, bg=C["panel"], padx=14, pady=6); sb.pack(fill="x")
-        self.status_var = tk.StringVar(value="Pronto.")
+        self.status_var = tk.StringVar(value="Ready.")
         tk.Label(sb, textvariable=self.status_var, bg=C["panel"], fg=C["orange"],
                  font=("Segoe UI",10,"bold"), anchor="w").pack(side="left")
         self.prog_var = tk.StringVar(value="")
         tk.Label(sb, textvariable=self.prog_var, bg=C["panel"], fg=C["dim"],
                  font=("Segoe UI",9), anchor="e").pack(side="right")
         lf = tk.Frame(self.root, bg=C["bg"], padx=14, pady=6); lf.pack(fill="both", expand=True)
-        tk.Label(lf, text="Log de execucao:", bg=C["bg"], fg=C["dim"],
+        tk.Label(lf, text="Execution log:", bg=C["bg"], fg=C["dim"],
                  font=("Segoe UI",8)).pack(anchor="w")
         self.log_box = scrolledtext.ScrolledText(lf, bg="#050510", fg=C["info"],
                  font=("Consolas",9), relief="flat", state="disabled", wrap="word")
@@ -396,25 +396,25 @@ class BounceApp:
                            ("step",C["step"]),("done",C["done"]),("dim",C["dim"]),("head","white")]:
             self.log_box.tag_config(tag, foreground=color)
         bf = tk.Frame(self.root, bg=C["bg"], pady=12); bf.pack()
-        self.btn_play = tk.Button(bf, text="  Iniciar", command=self._toggle_play,
+        self.btn_play = tk.Button(bf, text="  Start", command=self._toggle_play,
             bg=C["green"], fg="#080808", font=("Segoe UI",13,"bold"),
             width=15, relief="flat", cursor="hand2", pady=7)
         self.btn_play.grid(row=0, column=0, padx=10)
-        self.btn_stop = tk.Button(bf, text="  Parar", command=self._do_stop,
+        self.btn_stop = tk.Button(bf, text="  Stop", command=self._do_stop,
             bg=C["red"], fg="white", font=("Segoe UI",13,"bold"),
             width=15, relief="flat", cursor="hand2", pady=7, state="disabled")
         self.btn_stop.grid(row=0, column=1, padx=10)
-        self.btn_list_failed = tk.Button(bf, text="Listar Falhas", command=self._list_failed,
+        self.btn_list_failed = tk.Button(bf, text="List Failures", command=self._list_failed,
             bg=C["warn"], fg="#080808", font=("Segoe UI",10,"bold"),
             width=15, relief="flat", cursor="hand2", pady=5)
         self.btn_list_failed.grid(row=1, column=0, padx=10, pady=(8,0))
-        self.btn_clear_failed = tk.Button(bf, text="Limpar Falhas", command=self._clear_failed,
+        self.btn_clear_failed = tk.Button(bf, text="Clear Failures", command=self._clear_failed,
             bg=C["dim"], fg="white", font=("Segoe UI",10,"bold"),
             width=15, relief="flat", cursor="hand2", pady=5)
         self.btn_clear_failed.grid(row=1, column=1, padx=10, pady=(8,0))
 
     def _browse(self):
-        p = filedialog.askdirectory(title="Selecione a pasta de projetos Ableton")
+        p = filedialog.askdirectory(title="Select your Ableton projects folder")
         if p: self.folder_var.set(p.replace("/","\\"))
 
     def _log(self, msg, tag="info"):
@@ -429,39 +429,39 @@ class BounceApp:
         if not self._running:
             folder = self.folder_var.get().strip()
             if not folder or not os.path.isdir(folder):
-                messagebox.showerror("Erro","Selecione uma pasta valida."); return
+                messagebox.showerror("Error","Please select a valid folder."); return
             self._running = True; self._paused = self._stop = False
-            self.btn_play.config(text="  Pausar", bg=self.C["orange"])
+            self.btn_play.config(text="  Pause", bg=self.C["orange"])
             self.btn_stop.config(state="normal")
             self._thread = threading.Thread(target=self._worker, args=(folder,), daemon=True)
             self._thread.start()
         elif self._paused:
             self._paused = False
-            self.btn_play.config(text="  Pausar", bg=self.C["orange"])
-            self.status_var.set("Retomando..."); self._log("Retomado.", "step")
+            self.btn_play.config(text="  Pause", bg=self.C["orange"])
+            self.status_var.set("Resuming..."); self._log("Resumed.", "step")
         else:
             self._paused = True
-            self.btn_play.config(text="  Retomar", bg=self.C["green"])
-            self.status_var.set("Pausado"); self._log("Pausado.", "warn")
+            self.btn_play.config(text="  Resume", bg=self.C["green"])
+            self.status_var.set("Paused"); self._log("Paused.", "warn")
 
     def _do_stop(self):
         self._stop = True; self._paused = False
-        self._log("Stop solicitado.", "err"); self.status_var.set("Parando...")
+        self._log("Stop requested.", "err"); self.status_var.set("Stopping...")
         self.btn_stop.config(state="disabled"); self.btn_play.config(state="disabled")
 
     def _reset(self):
         self._running = False
-        self.btn_play.config(text="  Iniciar", bg=self.C["green"], state="normal")
+        self.btn_play.config(text="  Start", bg=self.C["green"], state="normal")
         self.btn_stop.config(state="disabled")
 
     def _list_failed(self):
         folder = self.folder_var.get().strip()
         if not folder or not os.path.isdir(folder):
-            messagebox.showerror("Erro", "Selecione uma pasta valida primeiro."); return
+            messagebox.showerror("Error", "Please select a valid folder first."); return
         failed = self._load_failed(folder)
         if not failed:
-            self._log("Lista de falhas esta vazia.", "info"); return
-        self._log(f"── Projetos com falha ({len(failed)}) ────────────────────", "warn")
+            self._log("Failure list is empty.", "info"); return
+        self._log(f"── Failed projects ({len(failed)}) ─────────────────────────", "warn")
         for p in sorted(failed):
             self._log(f"  ✗  {Path(p).parent.name} / {Path(p).name}", "err")
         self._log("──────────────────────────────────────────────────────", "warn")
@@ -469,20 +469,20 @@ class BounceApp:
     def _clear_failed(self):
         folder = self.folder_var.get().strip()
         if not folder or not os.path.isdir(folder):
-            messagebox.showerror("Erro", "Selecione uma pasta valida primeiro."); return
+            messagebox.showerror("Error", "Please select a valid folder first."); return
         p = self._failed_path(folder)
         if not p.exists():
-            self._log("Lista de falhas ja esta vazia.", "info"); return
-        if messagebox.askyesno("Limpar Falhas", "Remover todos os projetos da lista de falhas?"):
+            self._log("Failure list is already empty.", "info"); return
+        if messagebox.askyesno("Clear Failures", "Remove all projects from the failure list?"):
             p.unlink()
-            self._log("Lista de falhas limpa.", "step")
+            self._log("Failure list cleared.", "step")
 
     def _watchdog_loop(self):
         while self._running and not self._stop:
             time.sleep(5)
             if not self._running or self._stop: break
             if is_ableton_frozen():
-                self._log("[WATCHDOG] Ableton nao responsivo! Sinalizando crash...", "err")
+                self._log("[WATCHDOG] Ableton not responding! Flagging crash...", "err")
                 self._ableton_frozen = True
                 break
 
@@ -543,19 +543,19 @@ class BounceApp:
 
     def _worker(self, folder):
         try:
-            self._log(f"Pasta: {folder}", "head")
+            self._log(f"Folder: {folder}", "head")
             projects, skipped, failed_list = self._scan(folder)
             if failed_list:
-                self._log(f"{len(failed_list)} projetos com falha (ignorados):", "err")
+                self._log(f"{len(failed_list)} failed project(s) (skipped):", "err")
                 for p in failed_list: self._log(f"  ✗  {p.parent.name} / {p.name}", "err")
                 self._log("", "dim")
             if skipped:
-                self._log(f"{len(skipped)} ja com MP3:", "dim")
+                self._log(f"{len(skipped)} already have MP3:", "dim")
                 for p in skipped: self._log(f"  ok  {p.parent.name} - {p.stem}.mp3", "dim")
                 self._log("", "dim")
             if not projects:
-                self._log("Nenhum projeto novo.", "warn"); self.root.after(0, self._reset); return
-            self._log(f"{len(projects)} para processar:", "done")
+                self._log("No new projects found.", "warn"); self.root.after(0, self._reset); return
+            self._log(f"{len(projects)} project(s) to process:", "done")
             for i, p in enumerate(projects, 1):
                 self._log(f"  {i:3}. [{p.parent.name}]  {p.name}", "dim")
             self._log("", "dim")
@@ -566,19 +566,19 @@ class BounceApp:
                 if self._stop: break
                 crash_retries = 0
                 while True:
-                    # Se o watchdog sinalizou freeze: matar, esperar, reiniciar
+                    # If watchdog flagged a freeze: kill, wait, restart
                     if self._ableton_frozen:
                         if crash_retries >= 1:
-                            self._log("  [WATCHDOG] Crash repetido. Pulando projeto.", "err")
+                            self._log("  [WATCHDOG] Repeated crash. Skipping project.", "err")
                             kill_ableton()
                             self._sleep(4)
                             self._ableton_frozen = False
                             threading.Thread(target=self._watchdog_loop, daemon=True).start()
                             break
                         crash_retries += 1
-                        self._log(f"  [WATCHDOG] Matando Ableton travado...", "err")
+                        self._log(f"  [WATCHDOG] Killing frozen Ableton...", "err")
                         kill_ableton()
-                        self._log(f"  [WATCHDOG] Reiniciando watchdog e reabrindo projeto ({als.name})...", "step")
+                        self._log(f"  [WATCHDOG] Restarting watchdog and reopening project ({als.name})...", "step")
                         self._ableton_frozen = False
                         threading.Thread(target=self._watchdog_loop, daemon=True).start()
 
@@ -588,81 +588,81 @@ class BounceApp:
                     name = als.parent.name; self.status_var.set(f"  {name}")
                     self._log("─"*54, "dim")
                     self._log(f"[{idx}/{len(projects)}]  {name}", "done")
-                    self._log(f"  arquivo : {als.name}", "dim")
+                    self._log(f"  file     : {als.name}", "dim")
                     dur = als_last_clip_sec(als)
                     end_sec = min(dur, MAX_RENDER_SEC) if dur else MAX_RENDER_SEC
-                    if dur: self._log(f"  duracao : {dur:.1f}s  ->  {end_sec:.1f}s", "info")
-                    else:   self._log(f"  duracao nao detectada  ->  {end_sec}s", "warn")
+                    if dur: self._log(f"  duration : {dur:.1f}s  ->  {end_sec:.1f}s", "info")
+                    else:   self._log(f"  duration not detected  ->  {end_sec}s", "warn")
                     if not self._ok(): break
 
                     clear_popups()
-                    self._log("  -> Abrindo projeto...", "step")
+                    self._log("  -> Opening project...", "step")
                     os.startfile(str(als))
-                    self._log("  -> Aguardando Ableton carregar...", "step")
+                    self._log("  -> Waiting for Ableton to load...", "step")
                     loaded = wait_ableton(timeout=180, expected_stem=als.stem)
                     if loaded == "corrupted":
-                        self._log("  ERRO: Projeto corrompido — Ableton voltou pra Untitled. Marcando como falha.", "err")
+                        self._log("  ERROR: Corrupted project — Ableton reverted to Untitled. Marking as failed.", "err")
                         self._save_failed(folder, str(als))
                         break
                     if not loaded:
                         if self._ableton_frozen:
                             continue  # volta ao topo do while para tratar o crash
-                        self._log("  ERRO: Timeout. Pulando.", "err"); break
-                    self._log("  Projeto pronto.", "info")
+                        self._log("  ERROR: Timeout. Skipping.", "err"); break
+                    self._log("  Project ready.", "info")
                     if not self._ok():
                         if self._ableton_frozen: continue
                         break
 
-                    self.status_var.set(f"Exportando: {name}")
+                    self.status_var.set(f"Exporting: {name}")
                     MAX_EXPORT_ATTEMPTS = 15
                     exp_hwnd = None
                     for attempt in range(1, MAX_EXPORT_ATTEMPTS + 1):
                         if not self._ok(): break
-                        self._log(f"  -> Export Audio/Video (tentativa {attempt}/{MAX_EXPORT_ATTEMPTS})...", "step")
+                        self._log(f"  -> Export Audio/Video (attempt {attempt}/{MAX_EXPORT_ATTEMPTS})...", "step")
                         exp_hwnd = open_export_dialog()
                         if exp_hwnd: break
                         popup = _get_ableton_popup()
                         if popup:
                             popup_title = win32gui.GetWindowText(popup)
-                            self._log(f"  Dialogo inesperado: '{popup_title or '(sem titulo)'}' — dismissindo...", "warn")
+                            self._log(f"  Unexpected dialog: '{popup_title or '(no title)'}' — dismissing...", "warn")
                             dismiss_ok_dialog()
                             time.sleep(0.8)
                         else:
-                            self._log(f"  Export nao abriu. Aguardando 3s...", "warn")
+                            self._log(f"  Export did not open. Waiting 3s...", "warn")
                             self._sleep(3)
                     if not exp_hwnd:
                         if self._ableton_frozen: continue
                         if _get_ableton_popup():
                             dismiss_ok_dialog(); time.sleep(0.5)
-                        self._log(f"  {MAX_EXPORT_ATTEMPTS} tentativas sem sucesso. Pulando (sem salvar).", "err")
+                        self._log(f"  {MAX_EXPORT_ATTEMPTS} attempts failed. Skipping (not saved).", "err")
                         break
 
-                    self._log("  Dialogo aberto. Configurando...", "info")
+                    self._log("  Dialog open. Configuring...", "info")
                     ok, result = navigate_export_dialog(exp_hwnd, str(als.parent), als.stem, end_sec, log=lambda msg, warn=False: self._log(msg, 'warn' if warn else 'dim'))
                     if not ok:
-                        self._log(f"  ERRO: {result}", "err")
+                        self._log(f"  ERROR: {result}", "err")
                     else:
                         mp3_name = f"{als.parent.name} - {als.stem}.mp3"
                         mp3_path = als.parent / mp3_name
-                        self._log(f"  Renderizando: {mp3_name}", "info")
+                        self._log(f"  Rendering: {mp3_name}", "info")
                         exp_ok, exp_msg = wait_export_progress()
                         clear_popups()
                         if exp_ok:
                             size_kb = mp3_path.stat().st_size // 1024 if mp3_path.exists() else 0
-                            self._log(f"  Concluido: {mp3_name} ({size_kb} KB)", "done")
+                            self._log(f"  Done: {mp3_name} ({size_kb} KB)", "done")
                         else:
-                            self._log(f"  AVISO: {exp_msg}", "warn")
+                            self._log(f"  WARNING: {exp_msg}", "warn")
                     if self._ableton_frozen: continue
                     if not self._ok(): break
                     self._sleep(1.0)
-                    break  # projeto concluido com sucesso
+                    break  # project completed successfully
 
-            if self._stop: self._log("\nInterrompido.", "err"); self.status_var.set("Interrompido.")
-            else:          self._log("\nTodos processados!", "done"); self.status_var.set("Concluido!")
+            if self._stop: self._log("\nStopped.", "err"); self.status_var.set("Stopped.")
+            else:          self._log("\nAll done!", "done"); self.status_var.set("Done!")
 
         except Exception as e:
             import traceback
-            self._log(f"Erro: {e}", "err"); self._log(traceback.format_exc(), "err")
+            self._log(f"Error: {e}", "err"); self._log(traceback.format_exc(), "err")
         finally:
             self.root.after(0, self._reset)
 

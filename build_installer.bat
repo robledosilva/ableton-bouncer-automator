@@ -10,6 +10,13 @@ echo.
 
 :: ── Step 1: Build the exe with cx_Freeze ─────────────────────────────────
 echo [1/3] Building executable with cx_Freeze...
+
+:: Clean previous build to avoid cx_Freeze "cannot be cleaned" error
+if exist build (
+    echo     Cleaning previous build...
+    rmdir /s /q build
+)
+
 python setup.py build
 if errorlevel 1 (
     echo.

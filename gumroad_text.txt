@@ -1,0 +1,185 @@
+══════════════════════════════════════════
+INSTRUÇÕES DE FORMATAÇÃO
+Aplique com os botões da toolbar do Gumroad:
+- [H1] = Text dropdown → Heading 1
+- [H2] = Text dropdown → Heading 2
+- [B] = botão Bold
+- [•] = lista com bullet
+══════════════════════════════════════════
+
+
+[H1] Stop opening projects just to remember what they sound like.
+
+
+I'm actually a pretty organized guy. Just not that organized. And I have hundreds of Ableton projects sitting on my hard drive. I wanted something that would give me a short MP3 — maybe a minute and a half — so I could hear what a project was about without having to open the session.
+
+So I built it.
+
+────────────────────────────────────────
+
+[H2] You know this feeling.
+
+You open your projects folder. There are 300 sessions in there. Names like "loop exp Even though the stars are falling down - novo Vocal Project".
+
+You have no idea what half of them sound like anymore. So you open one. Wait for Ableton to load. Listen for 20 seconds. Close it. Open the next one. Repeat. 300 times.
+
+[B] That's not a workflow. That's a punishment.
+
+────────────────────────────────────────
+
+[H2] ABA exports all of them while you sleep.
+
+Point ABA at your projects folder. Hit Start. Walk away.
+
+It opens each project in Ableton automatically, configures the export settings, bounces the first 90 seconds as MP3, saves the file, and moves on to the next one. No clicks. No babysitting. No waking up at 3am to press Enter.
+
+By morning, every project has an MP3 sitting next to the .als file. Ready to browse in any file manager or music player.
+
+[B] ~100 projects exported per day · a few hours · while I slept.
+
+────────────────────────────────────────
+
+[H2] What it does
+
+[•] Batch exports all your .als projects as MP3 — entire folder and subfolders
+[•] Skips projects that already have an MP3 — never double-processes
+[•] Reads the actual project duration from the .als file — no guessing
+[•] Handles unexpected dialogs automatically — "samples not loaded" and others, up to 15 retries
+[•] Crash watchdog — detects if Ableton freezes, kills and restarts it, picks up where it left off
+[•] Pause / Resume / Stop — full control at any time
+[•] Real-time log — see exactly what's happening, project by project
+[•] Works with Ableton Live 10, 11 and 12
+
+────────────────────────────────────────
+
+[H2] Requirements
+
+[•] Windows 10 or 11 (64-bit)
+[•] Ableton Live — any edition (Intro, Standard, Suite)
+[•] AbletonMCP — included and installed automatically
+[•] License key — delivered instantly after purchase
+
+No Python. No command line. Single .exe installer — double-click and it's ready.
+
+────────────────────────────────────────
+
+[H2] One-time payment. No subscription. $29.
+
+License key delivered instantly to your email.
+
+────────────────────────────────────────
+
+[H2] FAQ
+
+[B] Do I need to leave Ableton open?
+Yes — ABA controls Ableton Live directly. Just leave it running in the background.
+
+[B] Can I use my computer while it runs?
+The screen needs to be unlocked, but you can work in other apps. Just don't move the mouse to the screen corners.
+
+[B] What if a project has missing samples?
+ABA dismisses the dialog and retries up to 15 times automatically before skipping to the next project.
+
+[B] What if Ableton crashes or freezes?
+The crash watchdog detects it, kills the process, restarts Ableton, and continues from where it stopped.
+
+[B] Will it overwrite existing MP3s?
+No. ABA skips any project that already has an MP3 file alongside it.
+
+[B] Is this affiliated with Ableton AG?
+No. ABA is an independent tool. Ableton® is a registered trademark of Ableton AG.
+
+────────────────────────────────────────
+
+Questions? robledosilva@gmail.com · Built by a producer, for producers.
+
+
+══════════════════════════════════════════
+VERSÃO EM PORTUGUÊS (cola abaixo do inglês)
+══════════════════════════════════════════
+
+
+[H1] Pare de abrir projeto por projeto só pra lembrar o que tem dentro.
+
+
+Eu até sou um cara organizado. Mas não muito. E eu tenho centenas de projetos do Ableton no meu disco. Eu queria uma solução que me desse um pequeno MP3 de um minuto e meio pra que eu pudesse ouvir sobre o que trata aquele projeto, sem precisar abrir a sessão.
+
+Então eu construí.
+
+────────────────────────────────────────
+
+[H2] Você conhece essa sensação.
+
+Você abre a pasta de projetos. Tem 300 sessões lá dentro. Com nomes tipo "loop exp Even though the stars are falling down - novo Vocal Project".
+
+Você não lembra mais o que metade deles soa. Então abre um. Espera o Ableton carregar. Ouve por 20 segundos. Fecha. Abre o próximo. Repete. 300 vezes.
+
+[B] Isso não é workflow. É punição.
+
+────────────────────────────────────────
+
+[H2] O ABA exporta todos enquanto você dorme.
+
+Aponte o ABA para a sua pasta de projetos. Clique em Iniciar. Vai dormir.
+
+Ele abre cada projeto no Ableton automaticamente, configura o export, bate o MP3 dos primeiros 90 segundos, salva o arquivo e passa pro próximo. Sem cliques. Sem babysitting. Sem acordar às 3 da manhã pra apertar Enter.
+
+De manhã, cada projeto tem um MP3 sentado do lado do arquivo .als. Pronto pra navegar em qualquer gerenciador de arquivos ou player.
+
+[B] ~100 projetos exportados por dia · algumas horas · enquanto eu dormia.
+
+────────────────────────────────────────
+
+[H2] O que ele faz
+
+[•] Exporta todos os seus projetos .als como MP3 — pasta inteira e subpastas
+[•] Pula projetos que já têm MP3 — nunca processa duas vezes
+[•] Lê a duração real do projeto diretamente do arquivo .als
+[•] Lida com diálogos inesperados automaticamente — "samples não carregadas" e outros, até 15 tentativas
+[•] Watchdog de crash — detecta se o Ableton travou, mata e reinicia, continua de onde parou
+[•] Pausar / Retomar / Parar — controle total a qualquer momento
+[•] Log em tempo real — veja exatamente o que está acontecendo, projeto por projeto
+[•] Funciona com Ableton Live 10, 11 e 12
+
+────────────────────────────────────────
+
+[H2] Requisitos
+
+[•] Windows 10 ou 11 (64-bit)
+[•] Ableton Live — qualquer edição (Intro, Standard, Suite)
+[•] AbletonMCP — incluso e instalado automaticamente
+[•] Chave de licença — entregue instantaneamente após a compra
+
+Sem Python. Sem linha de comando. Instalador .exe — dois cliques e está pronto.
+
+────────────────────────────────────────
+
+[H2] Pagamento único. Sem assinatura. $29.
+
+Chave de licença entregue instantaneamente no seu e-mail.
+
+────────────────────────────────────────
+
+[H2] Perguntas frequentes
+
+[B] Preciso deixar o Ableton aberto?
+Sim — o ABA controla o Ableton Live diretamente. Deixa ele rodando em segundo plano.
+
+[B] Posso usar o computador enquanto roda?
+A tela precisa estar desbloqueada, mas você pode trabalhar em outros apps. Só não mova o mouse para os cantos da tela.
+
+[B] E se um projeto tiver samples faltando?
+O ABA descarta o diálogo e tenta novamente até 15 vezes antes de pular pro próximo projeto.
+
+[B] E se o Ableton travar?
+O watchdog de crash detecta, mata o processo, reinicia o Ableton e continua de onde parou.
+
+[B] Vai sobrescrever MP3s que já existem?
+Não. O ABA pula qualquer projeto que já tenha um arquivo MP3 ao lado dele.
+
+[B] Isso é afiliado à Ableton AG?
+Não. O ABA é uma ferramenta independente. Ableton® é marca registrada da Ableton AG.
+
+────────────────────────────────────────
+
+Dúvidas? robledosilva@gmail.com · Feito por um produtor, para produtores.
