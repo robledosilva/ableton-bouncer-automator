@@ -8,6 +8,8 @@ last_serial.txt
 # Build output
 build/
 dist/
+installer/dist/
+installer/output/
 
 # Atalhos do Windows
 *.lnk
